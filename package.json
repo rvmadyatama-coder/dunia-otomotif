@@ -1,0 +1,13 @@
+{
+  "name": "dunia-otomotif-static",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Website statis Dunia Otomotif; tidak membutuhkan server admin atau database.",
+  "scripts": {
+    "test": "node scripts/test-site.js",
+    "build:sitemap": "node scripts/generate-sitemap.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
