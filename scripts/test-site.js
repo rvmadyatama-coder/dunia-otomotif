@@ -9,7 +9,7 @@ for(const file of htmlFiles){const s=fs.readFileSync(file,'utf8');const rel=path
  if(!/<html\b[^>]*lang="id"/i.test(s))errors.push(`${rel}: atribut bahasa id tidak ada`);
  if(!/<meta\b[^>]*charset=["\']utf-8["\'][^>]*>/i.test(s))errors.push(`${rel}: charset UTF-8 tidak ada`);
  if(!/<title>[^<]+<\/title>/i.test(s))errors.push(`${rel}: title tidak ada/kosong`);
- if(!/<link\b(?=[^>]*\brel=["\']canonical["\'])(?=[^>]*\bhref=["\']https:\/\/rivodaexhaust\.id\/)[^>]*>/i.test(s))errors.push(`${rel}: canonical HTTPS tidak ada atau domain tidak konsisten`);
+ const canonicalMatches=[...s.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)]; const canonicalHref=canonicalMatches.length===1?(canonicalMatches[0][0].match(/\bhref=["']([^"']+)["']/i)||[])[1]:null; const expectedCanonical="https://otomotif.rivodaexhaust.id/"+(rel==="index.html"?"":rel); if(canonicalMatches.length!==1||canonicalHref!==expectedCanonical)errors.push(`${rel}: canonical harus tepat satu dan cocok dengan ${expectedCanonical}`);
  if(!/<meta\b(?=[^>]*\bname=["\']description["\'])(?=[^>]*\bcontent=["\'][^"\']+)[^>]*>/i.test(s))errors.push(`${rel}: meta description tidak ada`);
  if(!/<h1\b/i.test(s))errors.push(`${rel}: H1 tidak ditemukan`);
  if(/â€™|â€œ|â€|Ã¢|Â©/.test(s))errors.push(`${rel}: pola mojibake terdeteksi`);

@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
-Sitemap: https://rivodaexhaust.id/sitemap.xml
+Sitemap: https://otomotif.rivodaexhaust.id/sitemap.xml
